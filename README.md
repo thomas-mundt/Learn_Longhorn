@@ -13,6 +13,20 @@ sudo apt install -y nfs-common
 sudo systemctl status iscsid
 ```
 
+
+## Helm
+
+```
+helm repo add longhorn https://charts.longhorn.io
+helm repo update
+
+helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.4.0
+```
+
+
+
+
+
 ```
 kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.3.1/deploy/longhorn.yaml
 ```
