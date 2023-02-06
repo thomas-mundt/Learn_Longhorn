@@ -20,9 +20,17 @@ sudo systemctl status iscsid
 helm repo add longhorn https://charts.longhorn.io
 helm repo update
 
-helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.4.0
+
 ```
 
+```
+
+helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.4.0
+# or
+helm show values longhorn/longhorn > longhorn-values.yaml
+helm install longhorn longhorn/longhorn --values longhorn-values.yaml   --namespace longhorn-system --create-namespace --version 1.4.0
+
+```
 
 
 
