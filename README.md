@@ -3,6 +3,7 @@
 ## Installing Longhorn with ReadWriteMany mode
 
 ```
+sudo apt install -y open-isci
 sudo apt install -y nfs-common
 ```
 
