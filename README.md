@@ -108,9 +108,6 @@ spec:
   containers:
     - name: task-pv-container
       image: nginx
-      ports:
-        - containerPort: 80
-          name: "http-server"
       volumeMounts:
         - mountPath: "/data"
           name: mypd
