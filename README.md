@@ -91,24 +91,6 @@ k apply -f pvc.yaml
 
 
 
-
-
-vi pvc.yaml
-```
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: longhorn-volv-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: longhorn
-  resources:
-    requests:
-      storage: 2Gi
-```
-kubectl create -f pvc.yaml
-
 You can use different PVC modes such as ReadWriteOnce or ReadOnlyMany. By default, the storage classes at least support ReadWriteOnce. So, ReadWriteMany is a special feature that uses NFS and is included in Longhorn.
 
 
@@ -117,22 +99,21 @@ vi pod.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: volume-test
-  namespace: default
+  name: mypod
 spec:
-  containers:
-  - name: volume-test
-    image: nginx:stable-alpine
-    imagePullPolicy: IfNotPresent
-    volumeMounts:
-    - name: volv
-      mountPath: /data
-    ports:
-    - containerPort: 80
   volumes:
-  - name: volv
-    persistentVolumeClaim:
-      claimName: longhorn-volv-pvc
+    - name: mypd
+      persistentVolumeClaim:
+        claimName: mypvc
+  containers:
+    - name: task-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/data"
+          name: mypd
 ```
 kubectl create -f pod.yaml
 
