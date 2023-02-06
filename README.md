@@ -47,8 +47,51 @@ helm upgrade --install longhorn longhorn/longhorn --values longhorn-values.yaml 
 ```
 
 
+## Create Volume
+
+
+Show longhorn storage class
+```
+k get sc
+```
+
+
+
+```
+# In GUI Create Volume
+# Then
+k get volumes -A
+
+k get crds | grep longhorn
+
+# Delete the volume again
+```
+
+
 
 ## Test
+
+
+vi pvc.yaml
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mypvc
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+```
+k apply -f pvc.yaml
+
+
+
+
+
 
 vi pvc.yaml
 ```
