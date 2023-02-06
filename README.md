@@ -41,6 +41,9 @@ k -n longhorn-system edit svc longhorn-frontend
 
 #or
 k -n longhorn-system port-forward svc/longhorn-frontend 8080:80
+
+#or
+helm upgrade --install longhorn longhorn/longhorn --values longhorn-values.yaml   -n longhorn-system
 ```
 
 
