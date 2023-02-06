@@ -33,11 +33,19 @@ helm install longhorn longhorn/longhorn --values longhorn-values.yaml   --namesp
 ```
 
 
+## Frontend
 
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.3.1/deploy/longhorn.yaml
+k -n longhorn-system edit svc longhorn-frontend
+
+#or
+k -n longhorn-system port-forward svc/longhorn-frontend 8080:80
 ```
+
+
+
+## Test
 
 vi pvc.yaml
 ```
