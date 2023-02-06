@@ -9,6 +9,8 @@ sudo apt upgrade
 
 sudo apt install -y open-isci
 sudo apt install -y nfs-common
+
+sudo systemctl status iscsid
 ```
 
 ```
