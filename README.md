@@ -7,11 +7,17 @@ sudo apt update
 sudo apt upgrade
 
 
-
 sudo apt-get install open-iscsi -y
 sudo apt install -y nfs-common
 
 sudo systemctl status iscsid
+
+
+# Rhel9
+dnf install -y targetcli
+
+sudo systemctl start target
+sudo systemctl enable target
 ```
 
 
